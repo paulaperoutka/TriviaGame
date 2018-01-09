@@ -107,6 +107,7 @@ $(document).ready (
 				if (timer === 0) {
 					clearInterval(time);
 					timeExpired ();
+					$("#timerColumn").empty();
 				}
 			}
 	}
@@ -184,7 +185,7 @@ $(document).ready (
 		counters.currentQuestion++;
 		console.log(counters.currentQuestion);
 		printQuestion();
-		startTimer();
+		// startTimer();
 		$("#questionAnswerRow").hide ();
 		setTimeout(function () {
 			$("#questionAnswerRow").show();
@@ -266,7 +267,7 @@ $(document).ready (
 
 	function resetGame () {
 		emptyQuestionAnswers ();
-
+		$("#timerColumn").empty();
 		counters.currentQuestion = 0;
 		counters.correctAnswers = 0;
 		counters.incorrectAnswers = 0;
