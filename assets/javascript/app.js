@@ -6,27 +6,27 @@ $(document).ready (
 	var questionArray = [
 
 	{
-		question: "Q1?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "A",
+		question: "What is the biological kingdom for all animals?",
+		possibleAnswers: ["Animalia", "Archaea", "Animalis", "Classis"],
+		correctAnswer: "Animalia",
 	}, 
 
 	{ 
-		question: "Q2?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "B",
+		question: "For every human on the planet, how many ants are there?",
+		possibleAnswers: ["4,000", "30,000", "1 million", "7 million"],
+		correctAnswer: "1 million",
 	},
 
 	{
-		question: "Q3?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "C",
+		question: "What is the scientific name for the red fox?",
+		possibleAnswers: ["Vulpes volpes", "Vulpes rubicundus", "Vulpes primus", "Vulpes vulpes"],
+		correctAnswer: "Vulpes vulpes",
 	},
 
 	{
-		question: "Q4?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "D",
+		question: "The great horned owl does not have which sense?",
+		possibleAnswers: ["taste", "smell", "sight", "touch"],
+		correctAnswer: "smell",
 	},
 
 	{
@@ -121,7 +121,6 @@ $(document).ready (
 			$("#answerTwo").append(questionArray[counters.currentQuestion].possibleAnswers[1]);
 			$("#answerThree").append(questionArray[counters.currentQuestion].possibleAnswers[2]);
 			$("#answerFour").append(questionArray[counters.currentQuestion].possibleAnswers[3]);
-			startTimer ();
 		}
 
 		else {
@@ -145,6 +144,7 @@ $(document).ready (
 
 	function correctAnswer () {
 		emptyQuestionAnswers ();
+		$("#timerColumn").empty();
 		$("#messageColumn").html("Rawr! That was the correct answer!");
 		counters.correctAnswers++;
 		console.log(counters.correctAnswers);
@@ -156,12 +156,12 @@ $(document).ready (
 			$("#questionAnswerRow").show();
 			$("#messageColumn").empty(); 
 			}, 1000);
-			// $("#messageColumn").hide();
+		timer = 15;
 	}
 
 	function incorrectAnswer () {
 		emptyQuestionAnswers ();
-		// $("#questionAnswerRow").hide();
+		$("#timerColumn").empty();
 		$("#messageColumn").html("Phlgbttt! That was incorrect! <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
 		counters.incorrectAnswers++;
 		console.log(counters.incorrectAnswers);
@@ -173,10 +173,13 @@ $(document).ready (
 			$("#questionAnswerRow").show();
 			$("#messageColumn").empty();
 			}, 1000);
+		timer = 15;
 	}
 
 	function timeExpired () {
 		emptyQuestionAnswers ();
+		$("#timerColumn").empty();
+		$("#timerColumn").empty();
 		$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
 		counters.timesUp++;
 		console.log(counters.timesUp);
@@ -188,6 +191,7 @@ $(document).ready (
 			$("#questionAnswerRow").show();
 			$("#messageColumn").empty();
 			}, 1000);
+		timer = 15;
 	}
 
 
@@ -198,6 +202,7 @@ $(document).ready (
 			console.log(questionArray[0].question);
 
 			printQuestion ();
+			startTimer ();
 			
 					//Capture user answer selection click
 					$(".possibleAnswer").on("click", function() {
@@ -205,22 +210,22 @@ $(document).ready (
 
 						//convert selection into string
 						if (this.id == "answerOne") {
-							selection = "A";
+							selection = questionArray[counters.currentQuestion].possibleAnswers[0];
 							console.log(selection);
 						}
 
 						else if (this.id == "answerTwo") {
-							selection = "B";
+							selection = questionArray[counters.currentQuestion].possibleAnswers[1];
 							console.log(selection);
 						}
 
 						else if (this.id == "answerThree") {
-							selection = "C";
+							selection = questionArray[counters.currentQuestion].possibleAnswers[2];
 							console.log(selection);
 						}
 
 						else {
-							selection = "D";
+							selection = questionArray[counters.currentQuestion].possibleAnswers[3];
 							console.log(selection);
 						}
 
@@ -243,6 +248,7 @@ $(document).ready (
 
 	function  endGame () {
 		emptyQuestionAnswers ();
+		$("#timerColumn").empty();
 		// $("#messageColumn").html("Finished! Let's see your stats!");
 		setTimeout(function () {
 			$("#messageColumn").append("You answered " + counters.correctAnswers + " questions correctly! <br>");
@@ -261,6 +267,7 @@ $(document).ready (
 
 	function resetGame () {
 		emptyQuestionAnswers ();
+
 		counters.currentQuestion = 0;
 		counters.correctAnswers = 0;
 		counters.incorrectAnswers = 0;
