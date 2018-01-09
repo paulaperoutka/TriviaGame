@@ -107,7 +107,6 @@ $(document).ready (
 				if (timer === 0) {
 					clearInterval(time);
 					timeExpired ();
-					timer = 15;
 				}
 			}
 	}
@@ -179,13 +178,13 @@ $(document).ready (
 	function timeExpired () {
 		emptyQuestionAnswers ();
 		$("#timerColumn").empty();
-		$("#timerColumn").empty();
 		$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
 		counters.timesUp++;
 		console.log(counters.timesUp);
 		counters.currentQuestion++;
 		console.log(counters.currentQuestion);
 		printQuestion();
+		startTimer();
 		$("#questionAnswerRow").hide ();
 		setTimeout(function () {
 			$("#questionAnswerRow").show();
