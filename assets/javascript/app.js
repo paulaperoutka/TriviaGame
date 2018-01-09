@@ -88,29 +88,47 @@ $(document).ready (
 	}
 
 	var timer = 15;
+	// var timerRunning = false;
 
 	console.log(questionArray);
-
-	function setGame () {
-		$("#messageColumn").html("<button type='button' class='btn btn-default btn-lg' id='start-game'>Let's begin! <span class='glyphicon glyphicon-triangle-right' aria-hidden='true'></span></button>");
-		$("#start-game").on("click", function () {
-			playGame ();
-		});
-	}
-	setGame ();
 
 	function startTimer () {
 		var time = setInterval (decrement, 1000);
 			function decrement () {
 				timer--;
 				$("#timerColumn").html("You have " + timer + " seconds remaining.");
-				if (timer === 0) {
-					clearInterval(time);
-					timeExpired ();
-					$("#timerColumn").empty();
+				if (timer == 0) {
+						clearInterval(time);
+						emptyQuestionAnswers ();
+						// $("#timerColumn").empty();
+						$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
+						counters.timesUp++;
+						console.log(counters.timesUp);
+						counters.currentQuestion++;
+						console.log(counters.currentQuestion);
+						printQuestion();
+						$("#questionAnswerRow").hide ();
+						setTimeout(function () {
+							$("#questionAnswerRow").show();
+							$("#messageColumn").empty();
+							}, 1000);
+						timer=15;
+						startTimer ();
 				}
 			}
 	}
+
+
+
+	function setGame () {
+		$("#messageColumn").html("<button type='button' class='btn btn-default btn-lg' id='start-game'>Let's begin! <span class='glyphicon glyphicon-triangle-right' aria-hidden='true'></span></button>");
+		$("#start-game").on("click", function () {
+			$("#timerColumn").show();
+			timer=15;
+			playGame ();
+		});
+	}
+	setGame ();
 
 	function printQuestion () {
 
@@ -124,7 +142,8 @@ $(document).ready (
 		}
 
 		else {
-			console.log("NO MORE questions")
+			console.log("No More questions")
+			$("#timerColumn").hide();
 			setTimeout(function () {
 				$("#questionAnswerRow").show();
 				$("#messageColumn").html("Finito! Let's see your stats. <br>");
@@ -176,29 +195,29 @@ $(document).ready (
 		timer = 15;
 	}
 
-	function timeExpired () {
-		emptyQuestionAnswers ();
-		$("#timerColumn").empty();
-		$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
-		counters.timesUp++;
-		console.log(counters.timesUp);
-		counters.currentQuestion++;
-		console.log(counters.currentQuestion);
-		printQuestion();
-		// startTimer();
-		$("#questionAnswerRow").hide ();
-		setTimeout(function () {
-			$("#questionAnswerRow").show();
-			$("#messageColumn").empty();
-			}, 1000);
-		timer = 15;
-	}
+	// function timeExpired () {
+	// 	emptyQuestionAnswers ();
+	// 	$("#timerColumn").empty();
+	// 	$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
+	// 	counters.timesUp++;
+	// 	console.log(counters.timesUp);
+	// 	counters.currentQuestion++;
+	// 	console.log(counters.currentQuestion);
+	// 	printQuestion();
+	// 	// startTimer();
+	// 	$("#questionAnswerRow").hide ();
+	// 	setTimeout(function () {
+	// 		$("#questionAnswerRow").show();
+	// 		$("#messageColumn").empty();
+	// 		}, 1000);
+	// 	timer = 15;
+	// }
 
 
 	function playGame () {
 
 			$("#messageColumn").empty();
-
+			$("#timerColumn").show();
 			console.log(questionArray[0].question);
 
 			printQuestion ();
@@ -247,9 +266,9 @@ $(document).ready (
 	}
 
 	function  endGame () {
-		emptyQuestionAnswers ();
 		$("#timerColumn").empty();
-		// $("#messageColumn").html("Finished! Let's see your stats!");
+		emptyQuestionAnswers ();
+
 		setTimeout(function () {
 			$("#messageColumn").append("You answered " + counters.correctAnswers + " questions correctly! <br>");
 			$("#messageColumn").append("You answered " + counters.incorrectAnswers + " questions incorrectly. <br>");
@@ -267,11 +286,11 @@ $(document).ready (
 
 	function resetGame () {
 		emptyQuestionAnswers ();
-		$("#timerColumn").empty();
 		counters.currentQuestion = 0;
 		counters.correctAnswers = 0;
 		counters.incorrectAnswers = 0;
 		counters.timesUp = 0;
+		timer=15;
 		setGame ();
 	}
 
