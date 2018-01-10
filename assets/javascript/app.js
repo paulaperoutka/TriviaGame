@@ -34,13 +34,13 @@ $(document).ready (
 	},
 
 	{
-		question: "The ______________ has been around for more than 30 million years.",
+		question: "The ______ has been around for more than 30 million years.",
 		possibleAnswers: ["Honey Bee", "Spider", "Beetle", "Dragonfly"],
 		correctAnswer: "Honey Bee",
 	},
 
 	{
-		question: "For cats, which of these has 32 muscles each?",
+		question: "In cats, which of these has 32 muscles each?",
 		possibleAnswers: ["Toe", "Eyelid", "Paw", "Ear"],
 		correctAnswer: "Ear",
 	},
@@ -87,26 +87,26 @@ $(document).ready (
 
 	console.log(questionArray);
 
-	var timer = 5;
+	var timer = 20;
 	var intervalId;
 
 	function startTimer () {
-		$("#timerColumn").show();
-		intervalId = setInterval (decrement, 1000);
-			function decrement () {
-				timer--;
-				$("#timerColumn").html("You have " + timer + " seconds remaining.");
-				if (timer === 0) {
-				timeExpired ();
-			}
-			}
-			
+
+			$("#timerColumn").show();
+			intervalId = setInterval (decrement, 1000);
+				function decrement () {
+					timer--;
+					$("#timerColumn").html("You have " + timer + " seconds remaining.");
+					if (timer === 0) {
+					timeExpired ();}
+				}
+
 	}
 
 	function setGame () {
 		$("#messageColumn").html("<button type='button' class='btn btn-default btn-lg' id='start-game'>Let's begin! <span class='glyphicon glyphicon-triangle-right' aria-hidden='true'></span></button>");
 		$("#start-game").on("click", function () {
-			timer=5;
+			timer=20;
 			playGame ();
 		});
 	}
@@ -124,13 +124,13 @@ $(document).ready (
 		}
 
 		else {
-			console.log("No More questions")
 			$("#timerColumn").hide();
+			$("#messageColumn").html("Finito! Let's see your stats. <br>");
+			console.log("No More questions")
 			setTimeout(function () {
 				$("#questionAnswerRow").show();
-				$("#messageColumn").html("Finito! Let's see your stats. <br>");
 				endGame();
-				}, 2000);
+				}, 3000);
 		}
 
 	}
@@ -141,11 +141,12 @@ $(document).ready (
 		$("#answerTwo").empty();
 		$("#answerThree").empty();
 		$("#answerFour").empty();
+		$("#timerColumn").empty();
 	}
 
 	function correctAnswer () {
 		emptyQuestionAnswers ();
-		$("#timerColumn").empty();
+		$("#timerColumn").hide();
 		$("#messageColumn").html("Rawr! That was the correct answer!");
 		counters.correctAnswers++;
 		console.log(counters.correctAnswers);
@@ -155,14 +156,15 @@ $(document).ready (
 		$("#questionAnswerRow").hide ();
 		setTimeout(function () {
 			$("#questionAnswerRow").show();
-			$("#messageColumn").empty(); 
-			}, 1000);
-		timer = 5;
+			$("#messageColumn").empty();
+			$("#timerColumn").show(); 
+			}, 3000);
+		timer = 20;
 	}
 
 	function incorrectAnswer () {
 		emptyQuestionAnswers ();
-		$("#timerColumn").empty();
+		$("#timerColumn").hide();
 		$("#messageColumn").html("Phlgbttt! That was incorrect! <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
 		counters.incorrectAnswers++;
 		console.log(counters.incorrectAnswers);
@@ -173,14 +175,16 @@ $(document).ready (
 		setTimeout(function () {
 			$("#questionAnswerRow").show();
 			$("#messageColumn").empty();
-			}, 1000);
-		timer = 5;
+			$("#timerColumn").show();
+			}, 2000);
+		timer = 20;
 	}
 
 function timeExpired () {
 	clearInterval(intervalId);
 	startTimer ();
 	emptyQuestionAnswers ();
+	$("#timerColumn").hide();
 	$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
 	counters.timesUp++;
 	console.log(counters.timesUp);
@@ -191,8 +195,9 @@ function timeExpired () {
 	setTimeout(function () {
 		$("#questionAnswerRow").show();
 		$("#messageColumn").empty();
-		}, 1000);
-	timer = 5;
+		$("#timerColumn").show();
+	}, 2000);
+	timer = 20;
 }
 
 
@@ -202,7 +207,16 @@ function timeExpired () {
 			console.log(questionArray[0].question);
 
 			printQuestion ();
+
 			startTimer ();
+
+
+					$(".possibleAnswer").hover(
+							function () {
+							$(this).animate({"font-size": "60"}, 100)},
+						function () {
+							$(this).animate({"font-size": "30"}, 100)}
+					);
 
 			
 					//Capture user answer selection click
@@ -248,8 +262,8 @@ function timeExpired () {
 	}
 
 	function  endGame () {
-		clearInterval(intervalId);
 		$("#timerColumn").hide();
+		clearInterval(intervalId);
 		emptyQuestionAnswers ();
 		setTimeout(function () {
 			$("#messageColumn").append("You answered " + counters.correctAnswers + " questions correctly! <br>");
@@ -258,6 +272,7 @@ function timeExpired () {
 		}, 2000);
 
 		setTimeout(function () {
+			$("#timerColumn").hide();
 			$("#messageColumn").append("<button type='button' class='btn btn-default btn-lg' id='replay-game'>Replay? <span class='glyphicon glyphicon-repeat' aria-hidden='true'></span></button>");
 			$("#replay-game").on("click", function () {
 				console.log("Again?!");
@@ -272,7 +287,7 @@ function timeExpired () {
 		counters.correctAnswers = 0;
 		counters.incorrectAnswers = 0;
 		counters.timesUp = 0;
-		timer=5;
+		timer=20;
 		setGame ();
 	}
 

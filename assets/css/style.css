@@ -1,11 +1,26 @@
-/*#possibleAnswersColumn:hover {
-	color: #accabd;
-}*/
+
+/*font-family: 'Amatic SC', cursive;
+font-family: 'Dawning of a New Day', cursive;
+*/
+
+h1 {
+	font-family: 'Dawning of a New Day', cursive;
+	font-size: 80px;
+}
+
+.clearfix {
+	color: white;
+	font-size: 45px;
+}
 
 body {
 	background-image: url(../images/background-image.jpeg);
 	background-size: cover;
-	font-family: 'Bungee';
-	color: silver;
+	font-family: 'Amatic SC', cursive;
+	color: #F5B90C;
 	font-size: 50px;
+}
+
+.small {
+		color: silver;
 }
