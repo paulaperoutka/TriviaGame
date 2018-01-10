@@ -1,3 +1,11 @@
 /*#possibleAnswersColumn:hover {
 	color: #accabd;
 }*/
+
+body {
+	background-image: url(../images/background-image.jpeg);
+	background-size: cover;
+	font-family: 'Bungee';
+	color: silver;
+	font-size: 50px;
+}

@@ -10,9 +10,9 @@ $(document).ready (
 	}, 
 
 	{ 
-		question: "For every human on the planet, how many ants are there?",
-		possibleAnswers: ["4,000", "30,000", "1 million", "7 million"],
-		correctAnswer: "1 million",
+		question: "Which of these higly intelligent animal species has been known to use tools?",
+		possibleAnswers: ["Dolphin", "Crow", "All three", "Octopus"],
+		correctAnswer: "All three",
 	},
 
 	{
@@ -28,51 +28,51 @@ $(document).ready (
 	},
 
 	{
-		question: "Q5?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "A",
+		question: "Humans share what percentage of DNA with chimps, the closest living species?",
+		possibleAnswers: ["92", "98.8", "86.3", "90.1"],
+		correctAnswer: "98.8",
 	},
 
 	{
-		question: "Q6?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "B",
+		question: "The ______________ has been around for more than 30 million years.",
+		possibleAnswers: ["Honey Bee", "Spider", "Beetle", "Dragonfly"],
+		correctAnswer: "Honey Bee",
 	},
 
 	{
-		question: "Q7?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "C",
+		question: "For cats, which of these has 32 muscles each?",
+		possibleAnswers: ["Toe", "Eyelid", "Paw", "Ear"],
+		correctAnswer: "Ear",
 	},
 
 	{
-		question: "Q8?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "D",
+		question: "What is the most poisonous fish in the world?",
+		possibleAnswers: ["Beta Fish", "Lion Fish", "Stone Fish", "Guppie"],
+		correctAnswer: "Stone Fish",
 	},
 
 	{
-		question: "Q9?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "A",
+		question: "An elephant can smell water up to how many miles away?",
+		possibleAnswers: ["2.7", "1", "3", "1.4"],
+		correctAnswer: "3",
 	},
 
 	{
-		question: "Q10?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "B",
+		question: "At birth, what is smaller than a mouse and weighs roughly only 4 oz.?",
+		possibleAnswers: ["Kangaroo", "Squirrel", "Killer Whale", "Panda"],
+		correctAnswer: "Panda",
 	},
 
 	{
-		question: "Q11?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "C",
+		question: "________ have been around since before dinosaurs?",
+		possibleAnswers: ["Ostriches", "Sharks", "Fleas", "Tortoises"],
+		correctAnswer: "Sharks",
 	},
 
 	{
-		question: "Q12?",
-		possibleAnswers: ["A", "B", "C", "D"],
-		correctAnswer: "D",
+		question: "What is the world's largest land predator?",
+		possibleAnswers: ["Polar Bear", "Grizzly Bear", "Wild Boar", "Rhinoceros"],
+		correctAnswer: "Polar Bear",
 	}
 
 	//close question array
@@ -85,10 +85,10 @@ $(document).ready (
 		timesUp: 0,
 	}
 
+	console.log(questionArray);
+
 	var timer = 5;
 	var intervalId;
-
-	console.log(questionArray);
 
 	function startTimer () {
 		$("#timerColumn").show();
