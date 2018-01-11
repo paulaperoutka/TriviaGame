@@ -7,11 +7,12 @@ $(document).ready (
 		question: "What is the biological kingdom for all animals?",
 		possibleAnswers: ["Animalia", "Archaea", "Animalis", "Classis"],
 		correctAnswer: "Animalia",
+
 	}, 
 
 	{ 
-		question: "Which of these higly intelligent animal species has been known to use tools?",
-		possibleAnswers: ["Dolphin", "Crow", "All three", "Octopus"],
+		question: "Which of these highly-intelligent animals has been known to use tools?",
+		possibleAnswers: ["Dolphin", "Crow", "Octopus", "All three"],
 		correctAnswer: "All three",
 	},
 
@@ -180,25 +181,25 @@ $(document).ready (
 		timer = 20;
 	}
 
-function timeExpired () {
-	clearInterval(intervalId);
-	startTimer ();
-	emptyQuestionAnswers ();
-	$("#timerColumn").hide();
-	$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
-	counters.timesUp++;
-	console.log(counters.timesUp);
-	counters.currentQuestion++;
-	console.log(counters.currentQuestion);
-	printQuestion();
-	$("#questionAnswerRow").hide ();
-	setTimeout(function () {
-		$("#questionAnswerRow").show();
-		$("#messageColumn").empty();
-		$("#timerColumn").show();
-	}, 2000);
-	timer = 20;
-}
+	function timeExpired () {
+		clearInterval(intervalId);
+		startTimer ();
+		emptyQuestionAnswers ();
+		$("#timerColumn").hide();
+		$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
+		counters.timesUp++;
+		console.log(counters.timesUp);
+		counters.currentQuestion++;
+		console.log(counters.currentQuestion);
+		printQuestion();
+		$("#questionAnswerRow").hide ();
+		setTimeout(function () {
+			$("#questionAnswerRow").show();
+			$("#messageColumn").empty();
+			$("#timerColumn").show();
+		}, 2000);
+		timer = 20;
+	}
 
 
 	function playGame () {
