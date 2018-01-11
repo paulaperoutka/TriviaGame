@@ -267,9 +267,9 @@ $(document).ready (
 		clearInterval(intervalId);
 		emptyQuestionAnswers ();
 		setTimeout(function () {
-			$("#messageColumn").append("You answered " + counters.correctAnswers + " questions correctly! <br>");
-			$("#messageColumn").append("You answered " + counters.incorrectAnswers + " questions incorrectly. <br>");
-			$("#messageColumn").append("You ran out of time on " + counters.timesUp + " questions. <br>");
+			$("#messageColumn").append("You answered " + counters.correctAnswers + " questions correctly! <br><br>");
+			$("#messageColumn").append("You answered " + counters.incorrectAnswers + " questions incorrectly. <br><br>");
+			$("#messageColumn").append("You ran out of time on " + counters.timesUp + " questions. <br><br>");
 		}, 2000);
 
 		setTimeout(function () {
