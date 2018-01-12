@@ -48,7 +48,7 @@ $(document).ready (
 
 	{
 		question: "What is the most poisonous fish in the world?",
-		possibleAnswers: ["Beta Fish", "Lion Fish", "Stone Fish", "Guppie"],
+		possibleAnswers: ["Beta Fish", "Lion Fish", "Stone Fish", "Guppy"],
 		correctAnswer: "Stone Fish",
 	},
 
