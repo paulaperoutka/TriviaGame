@@ -7,73 +7,84 @@ $(document).ready (
 		question: "What is the biological kingdom for all animals?",
 		possibleAnswers: ["Animalia", "Archaea", "Animalis", "Classis"],
 		correctAnswer: "Animalia",
-
+		answerImg: "<img id='img' src='assets/images/img1.jpg'>"
 	}, 
 
 	{ 
 		question: "Which of these highly-intelligent animals has been known to use tools?",
 		possibleAnswers: ["Dolphin", "Crow", "Octopus", "All three"],
 		correctAnswer: "All three",
+		answerImg: ("<img id='img' src='assets/images/img2i.jpg'>" + "<img id='img' src='assets/images/img2ii.jpg'>" + "<img id='img' src='assets/images/img2iii.jpg'>")
 	},
 
 	{
 		question: "What is the scientific name for the red fox?",
 		possibleAnswers: ["Vulpes volpes", "Vulpes rubicundus", "Vulpes primus", "Vulpes vulpes"],
 		correctAnswer: "Vulpes vulpes",
+		answerImg: "<img id='img' src='assets/images/img3.jpg'>"
 	},
 
 	{
 		question: "The great horned owl does not have which sense?",
 		possibleAnswers: ["taste", "smell", "sight", "touch"],
 		correctAnswer: "smell",
+		answerImg: "<img id='img' src='assets/images/img4.jpg'>"
 	},
 
 	{
 		question: "Humans share what percentage of DNA with chimps, the closest living species?",
 		possibleAnswers: ["92", "98.8", "86.3", "90.1"],
 		correctAnswer: "98.8",
+		answerImg: "<img id='img' src='assets/images/img5.jpg'>"
 	},
 
 	{
 		question: "The ______ has been around for more than 30 million years.",
 		possibleAnswers: ["Honey Bee", "Spider", "Beetle", "Dragonfly"],
 		correctAnswer: "Honey Bee",
+		answerImg: "<img id='img' src='assets/images/img6.jpg'>"
 	},
 
 	{
 		question: "In cats, which of these has 32 muscles each?",
 		possibleAnswers: ["Toe", "Eyelid", "Paw", "Ear"],
 		correctAnswer: "Ear",
+		answerImg: "<img id='img' src='assets/images/img7.jpg'>"
 	},
 
 	{
 		question: "What is the most poisonous fish in the world?",
 		possibleAnswers: ["Beta Fish", "Lion Fish", "Stone Fish", "Guppy"],
 		correctAnswer: "Stone Fish",
+		answerImg: "<img id='img' src='assets/images/img8.jpg'>"
 	},
 
 	{
 		question: "An elephant can smell water up to how many miles away?",
 		possibleAnswers: ["2.7", "1", "3", "1.4"],
 		correctAnswer: "3",
+		answerImg: "<img id='img' src='assets/images/img9.jpg'>"
 	},
 
 	{
 		question: "At birth, what is smaller than a mouse and weighs roughly only 4 oz.?",
 		possibleAnswers: ["Kangaroo", "Squirrel", "Killer Whale", "Panda"],
 		correctAnswer: "Panda",
+		answerImg: "<img id='img' src='assets/images/img10.jpg'>"
 	},
 
 	{
 		question: "________ have been around since before dinosaurs?",
 		possibleAnswers: ["Ostriches", "Sharks", "Fleas", "Tortoises"],
 		correctAnswer: "Sharks",
+		answerImg: "<img id='img' src='assets/images/img11.jpg'>"
 	},
 
 	{
 		question: "What is the world's largest land predator?",
 		possibleAnswers: ["Polar Bear", "Grizzly Bear", "Wild Boar", "Rhinoceros"],
 		correctAnswer: "Polar Bear",
+		answerImg: "<img id='img' src='assets/images/img12.jpg'>"
 	}
 
 	//close question array
@@ -148,7 +159,7 @@ $(document).ready (
 	function correctAnswer () {
 		emptyQuestionAnswers ();
 		$("#timerColumn").hide();
-		$("#messageColumn").html("Rawr! That was the correct answer!");
+		$("#messageColumn").html("Rawr! That was the correct answer!"  + "<br>" + questionArray[counters.currentQuestion].answerImg);
 		counters.correctAnswers++;
 		console.log(counters.correctAnswers);
 		counters.currentQuestion++;
@@ -166,7 +177,7 @@ $(document).ready (
 	function incorrectAnswer () {
 		emptyQuestionAnswers ();
 		$("#timerColumn").hide();
-		$("#messageColumn").html("Phlgbttt! That was incorrect! <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
+		$("#messageColumn").html("Phlgbttt! That was incorrect! <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer + "<br>" + questionArray[counters.currentQuestion].answerImg);
 		counters.incorrectAnswers++;
 		console.log(counters.incorrectAnswers);
 		counters.currentQuestion++;
@@ -186,7 +197,7 @@ $(document).ready (
 		startTimer ();
 		emptyQuestionAnswers ();
 		$("#timerColumn").hide();
-		$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer);
+		$("#messageColumn").html("Womp womp! The timer ran out. <br> The correct answer was: <br>" + questionArray[counters.currentQuestion].correctAnswer  + "<br>" + questionArray[counters.currentQuestion].answerImg);
 		counters.timesUp++;
 		console.log(counters.timesUp);
 		counters.currentQuestion++;
@@ -288,7 +299,6 @@ $(document).ready (
 		counters.correctAnswers = 0;
 		counters.incorrectAnswers = 0;
 		counters.timesUp = 0;
-		timer=20;
 		setGame ();
 	}
 

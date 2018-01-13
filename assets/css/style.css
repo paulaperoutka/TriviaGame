@@ -18,6 +18,7 @@ h1 {
 body {
 	background-image: url(../images/background-2.jpeg);
 	background-size: cover;
+/*	background-repeat: no-repeat;*/
 	font-family: 'Amatic SC', cursive;
 	font-size: 30px;
 	color: white;
@@ -25,4 +26,11 @@ body {
 
 .small {
 		color: silver;
+}
+
+#img {
+	height: 400px;
+	width: auto;
+	border: 2px solid silver;
+	margin: 8px;
 }
