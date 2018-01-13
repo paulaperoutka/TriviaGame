@@ -137,7 +137,6 @@ $(document).ready (
 
 		else {
 			$("#timerColumn").hide();
-			$("#messageColumn").html("Finito! Let's see your stats. <br>");
 			console.log("No More questions")
 			setTimeout(function () {
 				$("#questionAnswerRow").show();
@@ -278,6 +277,7 @@ $(document).ready (
 		clearInterval(intervalId);
 		emptyQuestionAnswers ();
 		setTimeout(function () {
+			$("#messageColumn").html("Finito! Let's see your stats. <br>");
 			$("#messageColumn").append("You answered " + counters.correctAnswers + " questions correctly! <br><br>");
 			$("#messageColumn").append("You answered " + counters.incorrectAnswers + " questions incorrectly. <br><br>");
 			$("#messageColumn").append("You ran out of time on " + counters.timesUp + " questions. <br><br>");
